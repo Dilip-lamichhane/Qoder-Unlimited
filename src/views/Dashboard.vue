@@ -27,10 +27,10 @@ const accountInfo = ref<{
   devDeviceId: string | null
 }>({ email: null, token: null, machineId: null, devDeviceId: null })
 
-const cursorPaths = ref<{
+const qoderPaths = ref<{
   storagePath: string
   sqlitePath: string
-  cursorPath: string
+  qoderPath: string
   machineIdPath: string
 } | null>(null)
 
@@ -47,7 +47,7 @@ const refreshInfo = async () => {
   loading.value = true
   try {
     accountInfo.value = await window.electronAPI.getAccountInfo()
-    cursorPaths.value = await window.electronAPI.getCursorPaths()
+    qoderPaths.value = await window.electronAPI.getQoderPaths()
     isAdmin.value = await window.electronAPI.isAdmin()
     platform.value = await window.electronAPI.getPlatform()
   } catch (e) {
@@ -183,47 +183,47 @@ const handlePathClick = async (path: string) => {
     <Card variant="glass" class="p-4 flex-1 overflow-hidden">
       <div class="flex items-center gap-2 mb-4">
         <HardDrive class="w-4 h-4 text-gold-400" />
-        <h3 class="dashboard-card-title">{{ t('dashboard.cursorPaths') }}</h3>
+        <h3 class="dashboard-card-title">{{ t('dashboard.qoderPaths') }}</h3>
       </div>
       <div class="space-y-3 text-xs font-mono">
         <div class="flex items-start gap-2">
           <span class="text-onyx-500 w-20 flex-shrink-0">{{ t('dashboard.storage') }}</span>
           <span 
-            v-if="cursorPaths?.storagePath"
-            @click="handlePathClick(cursorPaths.storagePath)"
+            v-if="qoderPaths?.storagePath"
+            @click="handlePathClick(qoderPaths.storagePath)"
             class="text-gold-400 hover:text-gold-300 underline cursor-pointer break-all transition-colors"
-            :data-original="cursorPaths.storagePath"
-            :title="`Click to open: ${cursorPaths.storagePath}`"
+            :data-original="qoderPaths.storagePath"
+            :title="`Click to open: ${qoderPaths.storagePath}`"
           >
-            {{ maskSensitiveInfo(cursorPaths.storagePath) }}
+            {{ maskSensitiveInfo(qoderPaths.storagePath) }}
           </span>
-          <span v-if="!cursorPaths?.storagePath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
+          <span v-if="!qoderPaths?.storagePath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
         </div>
         <div class="flex items-start gap-2">
           <span class="text-onyx-500 w-20 flex-shrink-0">{{ t('dashboard.database') }}</span>
           <span 
-            v-if="cursorPaths?.sqlitePath"
-            @click="handlePathClick(cursorPaths.sqlitePath)"
+            v-if="qoderPaths?.sqlitePath"
+            @click="handlePathClick(qoderPaths.sqlitePath)"
             class="text-gold-400 hover:text-gold-300 underline cursor-pointer break-all transition-colors"
-            :data-original="cursorPaths.sqlitePath"
-            :title="`Click to open: ${cursorPaths.sqlitePath}`"
+            :data-original="qoderPaths.sqlitePath"
+            :title="`Click to open: ${qoderPaths.sqlitePath}`"
           >
-            {{ maskSensitiveInfo(cursorPaths.sqlitePath) }}
+            {{ maskSensitiveInfo(qoderPaths.sqlitePath) }}
           </span>
-          <span v-if="!cursorPaths?.sqlitePath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
+          <span v-if="!qoderPaths?.sqlitePath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
         </div>
         <div class="flex items-start gap-2">
           <span class="text-onyx-500 w-20 flex-shrink-0">{{ t('dashboard.install') }}</span>
           <span 
-            v-if="cursorPaths?.cursorPath"
-            @click="handlePathClick(cursorPaths.cursorPath)"
+            v-if="qoderPaths?.qoderPath"
+            @click="handlePathClick(qoderPaths.qoderPath)"
             class="text-gold-400 hover:text-gold-300 underline cursor-pointer break-all transition-colors"
-            :data-original="cursorPaths.cursorPath"
-            :title="`Click to open: ${cursorPaths.cursorPath}`"
+            :data-original="qoderPaths.qoderPath"
+            :title="`Click to open: ${qoderPaths.qoderPath}`"
           >
-            {{ maskSensitiveInfo(cursorPaths.cursorPath) }}
+            {{ maskSensitiveInfo(qoderPaths.qoderPath) }}
           </span>
-          <span v-if="!cursorPaths?.cursorPath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
+          <span v-if="!qoderPaths?.qoderPath" class="text-onyx-400 break-all">{{ t('common.na') }}</span>
         </div>
       </div>
     </Card>

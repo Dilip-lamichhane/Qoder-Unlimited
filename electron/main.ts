@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain, shell, dialog } from 'electron'
 import { join, dirname } from 'path'
-import { existsSync, readFileSync, writeFileSync, mkdirSync, copyFileSync, unlinkSync, statSync, chmodSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync, copyFileSync, unlinkSync, statSync } from 'fs'
 import { execSync } from 'child_process'
 import { v4 as uuidv4 } from 'uuid'
 import { createHash, randomBytes } from 'crypto'
@@ -175,7 +175,7 @@ ipcMain.handle('system:saveScreenshot', async (_, imageData: string) => {
     }
     
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5)
-    const filename = `cursor-free-vip-log-${timestamp}.png`
+    const filename = `qoder-free-vip-log-${timestamp}.png`
     const filePath = join(downloadsPath, filename)
     
     const base64Data = imageData.replace(/^data:image\/png;base64,/, '')
@@ -193,18 +193,18 @@ ipcMain.handle('system:saveScreenshot', async (_, imageData: string) => {
 // IPC Handlers - Fixes
 // ============================================
 
-ipcMain.handle('fix:workbenchFile', async (event) => {
+ipcMain.handle('fix:workbenchFile', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
   sendLog('[INFO] Starting workbench file fix...')
   
   try {
-    const paths = getCursorPaths()
-    const targetPath = join(paths.cursorPath, 'out', 'vs', 'workbench', 'workbench.desktop.main.js')
+    const paths = getQoderPaths()
+    const targetPath = join(paths.qoderPath, 'out', 'vs', 'workbench', 'workbench.desktop.main.js')
     
     let sourcePath: string
     if (process.env.VITE_DEV_SERVER_URL) {
@@ -251,14 +251,14 @@ ipcMain.handle('fix:workbenchFile', async (event) => {
   }
 })
 
-ipcMain.handle('fix:cursorLocation', async (event) => {
+ipcMain.handle('fix:qoderLocation', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
-  sendLog('[INFO] Starting Cursor location fix...')
+  sendLog('[INFO] Starting Qoder location fix...')
   
   try {
     let sourcePath: string
@@ -266,24 +266,24 @@ ipcMain.handle('fix:cursorLocation', async (event) => {
     
     if (process.platform === 'win32') {
       const programFiles = process.env.ProgramFiles || 'C:\\Program Files'
-      sourcePath = join(programFiles, 'Cursor')
+      sourcePath = join(programFiles, 'Qoder')
       const localAppData = process.env.LOCALAPPDATA || ''
-      targetPath = join(localAppData, 'Programs', 'Cursor')
+      targetPath = join(localAppData, 'Programs', 'Qoder')
       
       if (!existsSync(sourcePath)) {
-        sendLog(`[INFO] Cursor not found in Program Files: ${sourcePath}`)
+        sendLog(`[INFO] Qoder not found in Program Files: ${sourcePath}`)
         sendLog(`[INFO] Checking if already in correct location...`)
         
         if (existsSync(targetPath)) {
-          sendLog(`[OK] Cursor is already in the correct location: ${targetPath}`)
+          sendLog(`[OK] Qoder is already in the correct location: ${targetPath}`)
           return { success: true, logs, alreadyFixed: true }
         }
         
-        sendLog(`[ERROR] Cursor installation not found in expected locations`)
-        return { success: false, logs, error: 'Cursor installation not found' }
+        sendLog(`[ERROR] Qoder installation not found in expected locations`)
+        return { success: false, logs, error: 'Qoder installation not found' }
       }
       
-      sendLog(`[INFO] Found Cursor in Program Files: ${sourcePath}`)
+      sendLog(`[INFO] Found Qoder in Program Files: ${sourcePath}`)
       sendLog(`[INFO] Target location: ${targetPath}`)
       
       if (existsSync(targetPath)) {
@@ -295,44 +295,44 @@ ipcMain.handle('fix:cursorLocation', async (event) => {
       const targetParent = dirname(targetPath)
       await fs.ensureDir(targetParent)
       
-      sendLog(`[INFO] Moving Cursor folder...`)
+      sendLog(`[INFO] Moving Qoder folder...`)
       sendLog(`[INFO] This may take a few moments...`)
       
       await fs.move(sourcePath, targetPath)
       
-      sendLog(`[OK] Cursor folder moved successfully`)
+      sendLog(`[OK] Qoder folder moved successfully`)
       sendLog(`[OK] Location fix completed`)
       
     } else if (process.platform === 'darwin') {
-      const systemPath = '/Applications/Cursor.app'
-      const userPath = join(process.env.HOME || '', 'Applications', 'Cursor.app')
+      const systemPath = '/Applications/Qoder.app'
+      const userPath = join(process.env.HOME || '', 'Applications', 'Qoder.app')
       
       if (existsSync(systemPath) && !existsSync(userPath)) {
-        sendLog(`[INFO] Found Cursor in system location: ${systemPath}`)
+        sendLog(`[INFO] Found Qoder in system location: ${systemPath}`)
         sendLog(`[INFO] Moving to user Applications folder...`)
         
         await fs.ensureDir(dirname(userPath))
         await fs.move(systemPath, userPath)
         
-        sendLog(`[OK] Cursor moved to user Applications folder`)
+        sendLog(`[OK] Qoder moved to user Applications folder`)
       } else if (existsSync(userPath)) {
-        sendLog(`[OK] Cursor is already in user location`)
+        sendLog(`[OK] Qoder is already in user location`)
       } else {
-        sendLog(`[INFO] Cursor installation not found in expected locations`)
-        return { success: false, logs, error: 'Cursor installation not found' }
+        sendLog(`[INFO] Qoder installation not found in expected locations`)
+        return { success: false, logs, error: 'Qoder installation not found' }
       }
       
       sendLog(`[OK] Location fix completed`)
       
     } else {
       const systemPaths = [
-        '/opt/Cursor',
-        '/usr/share/cursor',
-        '/usr/local/share/cursor'
+        '/opt/Qoder',
+        '/usr/share/qoder',
+        '/usr/local/share/qoder'
       ]
       
       const home = process.env.HOME || ''
-      const userPath = join(home, '.local', 'share', 'Cursor')
+      const userPath = join(home, '.local', 'share', 'Qoder')
       
       let foundSystemPath: string | null = null
       for (const sysPath of systemPaths) {
@@ -343,7 +343,7 @@ ipcMain.handle('fix:cursorLocation', async (event) => {
       }
       
       if (foundSystemPath) {
-        sendLog(`[INFO] Found Cursor in system location: ${foundSystemPath}`)
+        sendLog(`[INFO] Found Qoder in system location: ${foundSystemPath}`)
         sendLog(`[INFO] Moving to user location: ${userPath}`)
         
         if (existsSync(userPath)) {
@@ -354,12 +354,12 @@ ipcMain.handle('fix:cursorLocation', async (event) => {
         await fs.ensureDir(dirname(userPath))
         await fs.move(foundSystemPath, userPath)
         
-        sendLog(`[OK] Cursor moved to user location`)
+        sendLog(`[OK] Qoder moved to user location`)
       } else if (existsSync(userPath)) {
-        sendLog(`[OK] Cursor is already in user location`)
+        sendLog(`[OK] Qoder is already in user location`)
       } else {
-        sendLog(`[INFO] Cursor installation not found in expected locations`)
-        return { success: false, logs, error: 'Cursor installation not found' }
+        sendLog(`[INFO] Qoder installation not found in expected locations`)
+        return { success: false, logs, error: 'Qoder installation not found' }
       }
       
       sendLog(`[OK] Location fix completed`)
@@ -458,49 +458,49 @@ function getUserDocumentsPath(): string {
 }
 
 function getAccountsFilePath(): string {
-  return join(getUserDocumentsPath(), 'CursorFreeVIP', 'accounts.json')
+  return join(getUserDocumentsPath(), 'QoderFreeVIP', 'accounts.json')
 }
 
 function getConfigDir(): string {
-  return join(getUserDocumentsPath(), '.cursor-free-vip')
+  return join(getUserDocumentsPath(), '.qoder-free-vip')
 }
 
-function getCursorPaths(): { storagePath: string; sqlitePath: string; cursorPath: string; machineIdPath: string } {
+function getQoderPaths(): { storagePath: string; sqlitePath: string; qoderPath: string; machineIdPath: string } {
   const platform = process.platform
   
   if (platform === 'win32') {
     const appdata = process.env.APPDATA || ''
     const localappdata = process.env.LOCALAPPDATA || ''
     return {
-      storagePath: join(appdata, 'Cursor', 'User', 'globalStorage', 'storage.json'),
-      sqlitePath: join(appdata, 'Cursor', 'User', 'globalStorage', 'state.vscdb'),
-      cursorPath: join(localappdata, 'Programs', 'Cursor', 'resources', 'app'),
-      machineIdPath: join(appdata, 'Cursor', 'machineId')
+      storagePath: join(appdata, 'Qoder', 'User', 'globalStorage', 'storage.json'),
+      sqlitePath: join(appdata, 'Qoder', 'User', 'globalStorage', 'state.vscdb'),
+      qoderPath: join(localappdata, 'Programs', 'Qoder', 'resources', 'app'),
+      machineIdPath: join(appdata, 'Qoder', 'machineId')
     }
   } else if (platform === 'darwin') {
     const home = process.env.HOME || ''
     return {
-      storagePath: join(home, 'Library', 'Application Support', 'Cursor', 'User', 'globalStorage', 'storage.json'),
-      sqlitePath: join(home, 'Library', 'Application Support', 'Cursor', 'User', 'globalStorage', 'state.vscdb'),
-      cursorPath: '/Applications/Cursor.app/Contents/Resources/app',
-      machineIdPath: join(home, 'Library', 'Application Support', 'Cursor', 'machineId')
+      storagePath: join(home, 'Library', 'Application Support', 'Qoder', 'User', 'globalStorage', 'storage.json'),
+      sqlitePath: join(home, 'Library', 'Application Support', 'Qoder', 'User', 'globalStorage', 'state.vscdb'),
+      qoderPath: '/Applications/Qoder.app/Contents/Resources/app',
+      machineIdPath: join(home, 'Library', 'Application Support', 'Qoder', 'machineId')
     }
   } else {
     const home = process.env.HOME || ''
     const configDir = join(home, '.config')
-    const cursorDir = existsSync(join(configDir, 'Cursor')) ? 'Cursor' : 'cursor'
+    const qoderDir = existsSync(join(configDir, 'Qoder')) ? 'Qoder' : 'qoder'
     
     return {
-      storagePath: join(configDir, cursorDir, 'User', 'globalStorage', 'storage.json'),
-      sqlitePath: join(configDir, cursorDir, 'User', 'globalStorage', 'state.vscdb'),
-      cursorPath: existsSync('/opt/Cursor/resources/app') ? '/opt/Cursor/resources/app' : '/usr/share/cursor/resources/app',
-      machineIdPath: join(configDir, cursorDir, 'machineid')
+      storagePath: join(configDir, qoderDir, 'User', 'globalStorage', 'storage.json'),
+      sqlitePath: join(configDir, qoderDir, 'User', 'globalStorage', 'state.vscdb'),
+      qoderPath: existsSync('/opt/Qoder/resources/app') ? '/opt/Qoder/resources/app' : '/usr/share/qoder/resources/app',
+      machineIdPath: join(configDir, qoderDir, 'machineid')
     }
   }
 }
 
-ipcMain.handle('paths:getCursorPaths', () => {
-  return getCursorPaths()
+ipcMain.handle('paths:getQoderPaths', () => {
+  return getQoderPaths()
 })
 
 ipcMain.handle('paths:getConfigDir', () => {
@@ -671,13 +671,13 @@ function generateNewIds() {
   }
 }
 
-ipcMain.handle('machine:resetIds', async (event) => {
-  const paths = getCursorPaths()
+ipcMain.handle('machine:resetIds', async (_event) => {
+  const paths = getQoderPaths()
   const logs: string[] = []
   
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
   try {
@@ -758,28 +758,28 @@ ipcMain.handle('machine:resetIds', async (event) => {
 })
 
 // ============================================
-// IPC Handlers - Cursor Process Management
+// IPC Handlers - Qoder Process Management
 // ============================================
 
-ipcMain.handle('cursor:quit', async (event) => {
+ipcMain.handle('qoder:quit', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
-  sendLog('[INFO] Attempting to close Cursor...')
+  sendLog('[INFO] Attempting to close Qoder...')
   
   try {
     if (process.platform === 'win32') {
-      execSync('taskkill /F /IM Cursor.exe /T', { stdio: 'ignore' })
+      execSync('taskkill /F /IM Qoder.exe /T', { stdio: 'ignore' })
     } else {
-      execSync('pkill -f Cursor', { stdio: 'ignore' })
+      execSync('pkill -f Qoder', { stdio: 'ignore' })
     }
-    sendLog('[OK] Cursor processes terminated')
+    sendLog('[OK] Qoder processes terminated')
     return { success: true, logs }
   } catch {
-    sendLog('[INFO] No Cursor processes found or already closed')
+    sendLog('[INFO] No Qoder processes found or already closed')
     return { success: true, logs }
   }
 })
@@ -788,28 +788,28 @@ ipcMain.handle('cursor:quit', async (event) => {
 // IPC Handlers - Auto Update Disable
 // ============================================
 
-ipcMain.handle('update:disable', async (event) => {
+ipcMain.handle('update:disable', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
-  sendLog('[INFO] Disabling Cursor auto-update...')
+  sendLog('[INFO] Disabling Qoder auto-update...')
   
   try {
     let updaterPath: string
     let updateYmlPath: string
     
     if (process.platform === 'win32') {
-      updaterPath = join(process.env.LOCALAPPDATA || '', 'cursor-updater')
-      updateYmlPath = join(process.env.LOCALAPPDATA || '', 'Programs', 'Cursor', 'resources', 'app-update.yml')
+      updaterPath = join(process.env.LOCALAPPDATA || '', 'qoder-updater')
+      updateYmlPath = join(process.env.LOCALAPPDATA || '', 'Programs', 'Qoder', 'resources', 'app-update.yml')
     } else if (process.platform === 'darwin') {
-      updaterPath = join(process.env.HOME || '', 'Library', 'Application Support', 'cursor-updater')
-      updateYmlPath = '/Applications/Cursor.app/Contents/Resources/app-update.yml'
+      updaterPath = join(process.env.HOME || '', 'Library', 'Application Support', 'qoder-updater')
+      updateYmlPath = '/Applications/Qoder.app/Contents/Resources/app-update.yml'
     } else {
-      updaterPath = join(process.env.HOME || '', '.config', 'cursor-updater')
-      updateYmlPath = join(process.env.HOME || '', '.config', 'cursor', 'resources', 'app-update.yml')
+      updaterPath = join(process.env.HOME || '', '.config', 'qoder-updater')
+      updateYmlPath = join(process.env.HOME || '', '.config', 'qoder', 'resources', 'app-update.yml')
     }
     
     if (await fs.pathExists(updaterPath)) {
@@ -874,7 +874,7 @@ ipcMain.handle('update:disable', async (event) => {
       
       await fs.ensureDir(dir)
       
-      await fs.writeFile(updaterPath, '# Auto-update disabled by Cursor Free VIP\n', 'utf-8')
+      await fs.writeFile(updaterPath, '# Auto-update disabled by Qoder Free VIP\n', 'utf-8')
       
       if (process.platform === 'win32') {
         try {
@@ -903,18 +903,18 @@ ipcMain.handle('update:disable', async (event) => {
 // IPC Handlers - Token Limit Bypass
 // ============================================
 
-ipcMain.handle('token:bypass', async (event) => {
+ipcMain.handle('token:bypass', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
   sendLog('[INFO] Starting token limit bypass...')
   
   try {
-    const paths = getCursorPaths()
-    const workbenchPath = join(paths.cursorPath, 'out', 'vs', 'workbench', 'workbench.desktop.main.js')
+    const paths = getQoderPaths()
+    const workbenchPath = join(paths.qoderPath, 'out', 'vs', 'workbench', 'workbench.desktop.main.js')
     
     if (!existsSync(workbenchPath)) {
       sendLog(`[ERROR] Workbench file not found: ${workbenchPath}`)
@@ -964,7 +964,7 @@ ipcMain.handle('token:bypass', async (event) => {
 // ============================================
 
 ipcMain.handle('account:getInfo', async () => {
-  const paths = getCursorPaths()
+  const paths = getQoderPaths()
   
   try {
     let email: string | null = null
@@ -974,18 +974,18 @@ ipcMain.handle('account:getInfo', async () => {
     
     if (existsSync(paths.storagePath)) {
       const data = JSON.parse(readFileSync(paths.storagePath, 'utf-8'))
-      email = data['cursorAuth/cachedEmail'] || null
-      token = data['cursorAuth/accessToken'] || null
+      email = data['qoderAuth/cachedEmail'] || null
+      token = data['qoderAuth/accessToken'] || null
       machineId = data['telemetry.machineId'] || null
       devDeviceId = data['telemetry.devDeviceId'] || null
     }
     
     if (existsSync(paths.sqlitePath)) {
       if (!email) {
-        email = await readSqliteValue(paths.sqlitePath, 'cursorAuth/cachedEmail')
+        email = await readSqliteValue(paths.sqlitePath, 'qoderAuth/cachedEmail')
       }
       if (!token) {
-        token = await readSqliteValue(paths.sqlitePath, 'cursorAuth/accessToken')
+        token = await readSqliteValue(paths.sqlitePath, 'qoderAuth/accessToken')
       }
       if (!machineId) {
         machineId = await readSqliteValue(paths.sqlitePath, 'telemetry.machineId')
@@ -1002,25 +1002,25 @@ ipcMain.handle('account:getInfo', async () => {
 })
 
 ipcMain.handle('account:getSubscriptionInfo', async () => {
-  const paths = getCursorPaths()
+  const paths = getQoderPaths()
   
   try {
     let token: string | null = null
     
     if (existsSync(paths.storagePath)) {
       const data = JSON.parse(readFileSync(paths.storagePath, 'utf-8'))
-      token = data['cursorAuth/accessToken'] || null
+      token = data['qoderAuth/accessToken'] || null
     }
     
     if (!token && existsSync(paths.sqlitePath)) {
-      token = await readSqliteValue(paths.sqlitePath, 'cursorAuth/accessToken')
+      token = await readSqliteValue(paths.sqlitePath, 'qoderAuth/accessToken')
     }
     
     if (!token) {
       return { success: false, subscriptionType: null, daysRemaining: null }
     }
     
-    const url = 'https://api2.cursor.sh/auth/full_stripe_profile'
+    const url = 'https://api2.qoder.sh/auth/full_stripe_profile'
     const headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
       'Accept': 'application/json',
@@ -1124,7 +1124,7 @@ ipcMain.handle('accounts:getAccounts', async () => {
   }
 })
 
-ipcMain.handle('accounts:getAccountsFromFile', async (event, filePath: string) => {
+ipcMain.handle('accounts:getAccountsFromFile', async (_event, filePath: string) => {
   try {
     if (!existsSync(filePath)) {
       return { success: true, accounts: [] }
@@ -1138,7 +1138,7 @@ ipcMain.handle('accounts:getAccountsFromFile', async (event, filePath: string) =
   }
 })
 
-ipcMain.handle('accounts:createAccount', async (event, accountData: { name: string; email: string; accessToken: string; refreshToken?: string }, targetFilePath?: string) => {
+ipcMain.handle('accounts:createAccount', async (_event, accountData: { name: string; email: string; accessToken: string; refreshToken?: string }, targetFilePath?: string) => {
   try {
     const accountsPath = targetFilePath || getAccountsFilePath()
     const accountsDir = dirname(accountsPath)
@@ -1177,7 +1177,7 @@ ipcMain.handle('accounts:createAccount', async (event, accountData: { name: stri
   }
 })
 
-ipcMain.handle('accounts:importAccounts', async (event) => {
+ipcMain.handle('accounts:importAccounts', async (_event) => {
   try {
     const result = await dialog.showOpenDialog(mainWindow!, {
       title: 'Import Accounts',
@@ -1224,11 +1224,11 @@ ipcMain.handle('accounts:exportAccounts', async () => {
   }
 })
 
-ipcMain.handle('accounts:switchAccount', async (event, accountId: string) => {
+ipcMain.handle('accounts:switchAccount', async (_event, accountId: string) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
   try {
@@ -1246,20 +1246,20 @@ ipcMain.handle('accounts:switchAccount', async (event, accountId: string) => {
     }
     
     sendLog(`[INFO] Switching to account: ${account.name}`)
-    sendLog('[INFO] Applying account credentials to Cursor...')
+    sendLog('[INFO] Applying account credentials to Qoder...')
     
-    const paths = getCursorPaths()
+    const paths = getQoderPaths()
     
     let storageData: Record<string, any> = {}
     if (existsSync(paths.storagePath)) {
       storageData = JSON.parse(readFileSync(paths.storagePath, 'utf-8'))
     }
     
-    storageData['cursorAuth/cachedSignUpType'] = 'Auth_0'
-    storageData['cursorAuth/cachedEmail'] = account.email
-    storageData['cursorAuth/accessToken'] = account.accessToken
+    storageData['qoderAuth/cachedSignUpType'] = 'Auth_0'
+    storageData['qoderAuth/cachedEmail'] = account.email
+    storageData['qoderAuth/accessToken'] = account.accessToken
     if (account.refreshToken) {
-      storageData['cursorAuth/refreshToken'] = account.refreshToken
+      storageData['qoderAuth/refreshToken'] = account.refreshToken
     }
     if (account.machineId) {
       storageData['telemetry.machineId'] = account.machineId
@@ -1278,12 +1278,12 @@ ipcMain.handle('accounts:switchAccount', async (event, accountId: string) => {
     if (existsSync(paths.sqlitePath)) {
       sendLog('[INFO] Updating SQLite database...')
       const sqliteUpdates: Record<string, string> = {
-        'cursorAuth/cachedSignUpType': 'Auth_0',
-        'cursorAuth/cachedEmail': account.email,
-        'cursorAuth/accessToken': account.accessToken
+        'qoderAuth/cachedSignUpType': 'Auth_0',
+        'qoderAuth/cachedEmail': account.email,
+        'qoderAuth/accessToken': account.accessToken
       }
       if (account.refreshToken) {
-        sqliteUpdates['cursorAuth/refreshToken'] = account.refreshToken
+        sqliteUpdates['qoderAuth/refreshToken'] = account.refreshToken
       }
       if (account.machineId) {
         sqliteUpdates['telemetry.machineId'] = account.machineId
@@ -1304,7 +1304,7 @@ ipcMain.handle('accounts:switchAccount', async (event, accountId: string) => {
     }
     
     sendLog('[OK] Account switched successfully')
-    sendLog('[INFO] Please restart Cursor for changes to take effect')
+    sendLog('[INFO] Please restart Qoder for changes to take effect')
     
     return { success: true, logs }
   } catch (err: any) {
@@ -1313,7 +1313,7 @@ ipcMain.handle('accounts:switchAccount', async (event, accountId: string) => {
   }
 })
 
-ipcMain.handle('accounts:deleteAccount', async (event, accountId: string, targetFilePath?: string) => {
+ipcMain.handle('accounts:deleteAccount', async (_event, accountId: string, targetFilePath?: string) => {
   try {
     const accountsPath = targetFilePath || getAccountsFilePath()
     if (!existsSync(accountsPath)) {
@@ -1337,12 +1337,12 @@ ipcMain.handle('accounts:getAccountsFilePath', () => {
   return getAccountsFilePath()
 })
 
-ipcMain.handle('account:updateAuth', async (event, { email, accessToken, refreshToken }) => {
-  const paths = getCursorPaths()
+ipcMain.handle('account:updateAuth', async (_event, { email, accessToken, refreshToken }) => {
+  const paths = getQoderPaths()
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
   try {
@@ -1353,10 +1353,10 @@ ipcMain.handle('account:updateAuth', async (event, { email, accessToken, refresh
       data = JSON.parse(readFileSync(paths.storagePath, 'utf-8'))
     }
     
-    data['cursorAuth/cachedSignUpType'] = 'Auth_0'
-    if (email) data['cursorAuth/cachedEmail'] = email
-    if (accessToken) data['cursorAuth/accessToken'] = accessToken
-    if (refreshToken) data['cursorAuth/refreshToken'] = refreshToken
+    data['qoderAuth/cachedSignUpType'] = 'Auth_0'
+    if (email) data['qoderAuth/cachedEmail'] = email
+    if (accessToken) data['qoderAuth/accessToken'] = accessToken
+    if (refreshToken) data['qoderAuth/refreshToken'] = refreshToken
     
     const dir = join(paths.storagePath, '..')
     if (!existsSync(dir)) {
@@ -1370,11 +1370,11 @@ ipcMain.handle('account:updateAuth', async (event, { email, accessToken, refresh
       sendLog('[INFO] Updating SQLite database...')
       
       const sqliteUpdates: Record<string, string> = {
-        'cursorAuth/cachedSignUpType': 'Auth_0'
+        'qoderAuth/cachedSignUpType': 'Auth_0'
       }
-      if (email) sqliteUpdates['cursorAuth/cachedEmail'] = email
-      if (accessToken) sqliteUpdates['cursorAuth/accessToken'] = accessToken
-      if (refreshToken) sqliteUpdates['cursorAuth/refreshToken'] = refreshToken
+      if (email) sqliteUpdates['qoderAuth/cachedEmail'] = email
+      if (accessToken) sqliteUpdates['qoderAuth/accessToken'] = accessToken
+      if (refreshToken) sqliteUpdates['qoderAuth/refreshToken'] = refreshToken
       
       const success = await updateSqliteDatabase(paths.sqlitePath, sqliteUpdates, sendLog)
       if (success) {
@@ -1395,46 +1395,46 @@ ipcMain.handle('account:updateAuth', async (event, { email, accessToken, refresh
 // IPC Handlers - Totally Reset
 // ============================================
 
-ipcMain.handle('cursor:totallyReset', async (event) => {
+ipcMain.handle('qoder:totallyReset', async (_event) => {
   const logs: string[] = []
   const sendLog = (message: string) => {
     logs.push(message)
-    event.sender.send('log:message', message)
+    _event.sender.send('log:message', message)
   }
   
-  sendLog('[INFO] Starting complete Cursor reset...')
-  sendLog('[WARN] This will remove all Cursor settings and data')
+  sendLog('[INFO] Starting complete Qoder reset...')
+  sendLog('[WARN] This will remove all Qoder settings and data')
   
   try {
-    const paths = getCursorPaths()
-    
-    let cursorDataDirs: string[] = []
+    const paths = getQoderPaths()
+      
+    let qoderDataDirs: string[] = []
     
     if (process.platform === 'win32') {
       const appdata = process.env.APPDATA || ''
       const localappdata = process.env.LOCALAPPDATA || ''
-      cursorDataDirs = [
-        join(appdata, 'Cursor'),
-        join(localappdata, 'cursor-updater')
+      qoderDataDirs = [
+        join(appdata, 'Qoder'),
+        join(localappdata, 'qoder-updater')
       ]
     } else if (process.platform === 'darwin') {
       const home = process.env.HOME || ''
-      cursorDataDirs = [
-        join(home, 'Library', 'Application Support', 'Cursor'),
-        join(home, 'Library', 'Application Support', 'cursor-updater'),
-        join(home, 'Library', 'Preferences', 'com.cursor.Cursor.plist'),
-        join(home, 'Library', 'Caches', 'com.cursor.Cursor')
+      qoderDataDirs = [
+        join(home, 'Library', 'Application Support', 'Qoder'),
+        join(home, 'Library', 'Application Support', 'qoder-updater'),
+        join(home, 'Library', 'Preferences', 'com.qoder.Qoder.plist'),
+        join(home, 'Library', 'Caches', 'com.qoder.Qoder')
       ]
     } else {
       const home = process.env.HOME || ''
-      cursorDataDirs = [
-        join(home, '.config', 'Cursor'),
-        join(home, '.config', 'cursor'),
-        join(home, '.config', 'cursor-updater')
+      qoderDataDirs = [
+        join(home, '.config', 'Qoder'),
+        join(home, '.config', 'qoder'),
+        join(home, '.config', 'qoder-updater')
       ]
     }
     
-    for (const dir of cursorDataDirs) {
+    for (const dir of qoderDataDirs) {
       if (existsSync(dir)) {
         try {
           const stats = statSync(dir)

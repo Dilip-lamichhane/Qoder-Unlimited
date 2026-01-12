@@ -31,7 +31,7 @@ const disableAutoUpdate = async () => {
   
   try {
     emit('log', 'Closing Cursor application...')
-    await window.electronAPI.quitCursor()
+    await window.electronAPI.quitQoder()
     
     await new Promise(resolve => setTimeout(resolve, 1000))
     

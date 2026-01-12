@@ -8,7 +8,7 @@ import ResetMachineId from '@/views/ResetMachineId.vue'
 import DisableUpdate from '@/views/DisableUpdate.vue'
 import TokenBypass from '@/views/TokenBypass.vue'
 import TotallyReset from '@/views/TotallyReset.vue'
-import QuitCursor from '@/views/QuitCursor.vue'
+import QuitQoder from '@/views/QuitQoder.vue'
 import Settings from '@/views/Settings.vue'
 import ManualAuth from '@/views/ManualAuth.vue'
 import MultiAccountManager from '@/views/MultiAccountManager.vue'
@@ -28,7 +28,7 @@ const views: Record<string, any> = {
   disableUpdate: DisableUpdate,
   tokenBypass: TokenBypass,
   totallyReset: TotallyReset,
-  quitCursor: QuitCursor,
+  quitQoder: QuitQoder,
   settings: Settings,
   manualAuth: ManualAuth,
   multiAccountManager: MultiAccountManager

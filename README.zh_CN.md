@@ -1,13 +1,13 @@
 <div align="center">
 
-# ➤ Cursor Free VIP
+# ➤ Qoder Free VIP
 
 **現代圖形界面** | 重置機器碼和管理多個帳戶
 
-*Cursor AI 免費試用助手*
+*Qoder AI 免費試用助手*
 
-[![Stars](https://img.shields.io/github/stars/ChloeVPin/cursor-free-vip?style=flat-square)](https://github.com/ChloeVPin/cursor-free-vip/stargazers)
-[![Forks](https://img.shields.io/github/forks/ChloeVPin/cursor-free-vip?style=flat-square)](https://github.com/ChloeVPin/cursor-free-vip/network/members)
+[![Stars](https://img.shields.io/github/stars/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/stargazers)
+[![Forks](https://img.shields.io/github/forks/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/network/members)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square)](LICENSE.zh_CN.md)
 
 [English](README.md) • [Русский](README.ru.md)
@@ -18,7 +18,7 @@
 
 <div align="center">
 
-![Cursor Free VIP 截圖](assets/cursor-free-vip-v2.png)
+![Qoder Free VIP 截圖](assets/qoder-free-vip-v2.png)
 
 </div>
 
@@ -28,10 +28,10 @@
 ```
 🎯 獨特功能：
  📚 內置文檔 - 應用內完整的文檔頁面
- 🔧 應用內修復 - 自動修復常見 Cursor 問題：
+ 🔧 應用內修復 - 自動修復常見 Qoder 問題：
     • 修復缺失的 workbench.desktop.main.js 文件
     • 修復缺失的 product.json 文件
-    • 修復 Cursor 安裝位置問題
+    • 修復 Qoder 安裝位置問題
  👥 應用內帳戶管理器 - 多帳戶管理（測試版，未測試）
     • 創建、導入、切換和刪除帳戶
     • 本地存儲在您的文檔文件夾中
@@ -64,10 +64,10 @@ macOS 和 Linux 支持將逐步推出。如果您想為您的操作系統從源�
  🔄 重置機器碼 - 生成新標識符以重置試用狀態
  👥 多帳戶管理器（測試版）- 創建、導入、切換和刪除帳戶
  🔐 手動驗證 - 無需標準登錄即可設置憑據
- 🚫 禁用自動更新 - 防止 Cursor 自動更新
+ 🚫 禁用自動更新 - 防止 Qoder 自動更新
  🔢 令牌限制助手 - 調整令牌限制並隱藏試用指示器
- ⏹️ 退出 Cursor 進程 - 強制關閉所有 Cursor 進程
- 🔁 完全重置 Cursor - 完全重置設置和配置
+ ⏹️ 退出 Qoder 進程 - 強制關閉所有 Qoder 進程
+ 🔁 完全重置 Qoder - 完全重置設置和配置
 
 附加功能：
  📚 內置文檔 - 應用內完整的幫助系統
@@ -99,19 +99,19 @@ macOS 和 Linux 支持將逐步推出。如果您想為您的操作系統從源�
 
 ```
 Windows（正式發布）：
-1. 訪問發布頁面：https://github.com/ChloeVPin/cursor-free-vip/releases
+1. 訪問發布頁面：https://github.com/Dilip-lamichhane/qoder-free-vip/releases
 2. 下載最新的 .exe 安裝程序
 3. 運行安裝程序（需要管理員權限）
-4. 從應用程序啟動 Cursor Free VIP
+4. 從應用程序啟動 Qoder Free VIP
 
 系統要求：
  ✅ Windows 10/11 (x64)
- ✅ 系統上已安裝 Cursor AI
+ ✅ 系統上已安裝 Qoder AI
  ✅ 管理員權限（推薦）
 
 從源代碼構建（macOS/Linux）：
-git clone https://github.com/ChloeVPin/cursor-free-vip.git
-cd cursor-free-vip
+git clone https://github.com/Dilip-lamichhane/qoder-free-vip.git
+cd qoder-free-vip
 npm install
 npm run build
 
@@ -130,18 +130,18 @@ npm run build
 
 ```
 使用清單：
- ✅ 確保在運行前已關閉 Cursor
+ ✅ 確保在運行前已關閉 Qoder
  ✅ 以管理員權限啟動
  ✅ 通過側邊欄導航功能
  ✅ 查看信息按鈕（ℹ️）了解說明
  ✅ 使用內置文檔頁面獲取幫助
- ✅ 在使用會關閉 Cursor 的功能前保存工作
+ ✅ 在使用會關閉 Qoder 的功能前保存工作
 
 配置：
  配置文件存儲在：
-  Windows: %USERPROFILE%\Documents\CursorFreeVIP\
-  macOS: ~/Documents/CursorFreeVIP/
-  Linux: ~/Documents/CursorFreeVIP/
+  Windows: %USERPROFILE%\Documents\QoderFreeVIP\
+  macOS: ~/Documents/QoderFreeVIP/
+  Linux: ~/Documents/QoderFreeVIP/
 
  文件：
   accounts.json - 多帳戶數據
@@ -157,7 +157,7 @@ npm run build
 常見問題：
  🔒 權限錯誤 → 以管理員/root 權限運行
  ✉️ 帳戶授權錯誤 → 使用非臨時電子郵件服務
- 📁 找不到 Cursor 路徑 → 確保 Cursor 在默認位置
+ 📁 找不到 Qoder 路徑 → 確保 Qoder 在默認位置
  ⚠️ 功能不工作 → 使用前完全關閉 Cursor
  🔨 構建錯誤（macOS/Linux）→ 在 GitHub 上報告問題
  🚫 應用程序無法啟動 → 檢查 Node.js 和依賴項
@@ -165,7 +165,7 @@ npm run build
 應用內修復可用：
  🔧 缺失 workbench.desktop.main.js → 使用應用內的故障排除部分
  🔧 缺失 product.json → 使用應用內的故障排除部分
- 🔧 Cursor 位置錯誤 → 使用應用內的故障排除部分
+ 🔧 Qoder 位置錯誤 → 使用應用內的故障排除部分
 ```
 
 </details>
@@ -175,13 +175,13 @@ npm run build
 
 ```
 ⚠️ 請使用管理員權限運行應用程序
-⚠️ 確認在運行功能前已關閉 Cursor
+⚠️ 確認在運行功能前已關閉 Qoder
 ⚠️ 此工具僅供學習和研究使用
 ⚠️ 請遵守相關軟件使用條款
 ⚠️ 此工具不會生成假的電子郵件帳戶或 OAuth 訪問
 ⚠️ 我們不支持自動註冊（過時且不可靠）
 
-請支持原項目 Cursor：https://cursor.com
+請支持原項目 Qoder：https://qoder.com
 ```
 
 </details>
@@ -193,7 +193,7 @@ npm run build
 
 歡迎貢獻！🎉
 
-[🐛 報告問題](https://github.com/ChloeVPin/cursor-free-vip/issues) • [💡 建議功能](https://github.com/ChloeVPin/cursor-free-vip/discussions)
+[🐛 報告問題](https://github.com/Dilip-lamichhane/qoder-free-vip/issues) • [💡 建議功能](https://github.com/Dilip-lamichhane/qoder-free-vip/discussions)
 
 **注意：** 已禁用拉取請求。如果您發現問題，請報告，我將作為主要開發者進行修復。
 
@@ -225,8 +225,8 @@ npm run build
 
 **使用 ❤️ 和 Electron & Vue.js 打造**
 
-由 [ChloeVPin](https://github.com/ChloeVPin) 製作
+由 [Dilip-lamichhane](https://github.com/Dilip-lamichhane) 製作
 
-如果覺得有用，請 [⭐ 給這個項目點個星](https://github.com/ChloeVPin/cursor-free-vip)！
+如果覺得有用，請 [⭐ 給這個項目點個星](https://github.com/Dilip-lamichhane/qoder-free-vip)！
 
 </div>

@@ -81,12 +81,12 @@ export const borderRadius = {
 } as const
 
 export const appMeta = {
-  name: 'Cursor Free VIP',
+  name: 'Qoder Free VIP',
   version: '1.0',
-  author: 'ChloeVPin',
+  author: 'Dilip-lamichhane',
   company: 'CCC Suite',
-  github: 'https://github.com/ChloeVPin/cursor-free-vip',
+  github: 'https://github.com/Dilip-lamichhane/qoder-free-vip',
   description: 'Free Trial Helper',
-  inspiredBy: 'cursor-free-vip',
+  inspiredBy: 'qoder-free-vip',
 } as const
 

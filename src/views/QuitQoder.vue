@@ -22,13 +22,13 @@ const loading = ref(false)
 const success = ref(false)
 const showInfoDialog = ref(false)
 
-const quitCursor = async () => {
+const quitQoder = async () => {
   loading.value = true
   success.value = false
   emit('clear-logs')
   
   try {
-    await window.electronAPI.quitCursor()
+    await window.electronAPI.quitQoder()
     success.value = true
   } catch (e: any) {
     emit('log', `Error: ${e.message}`)
@@ -76,7 +76,7 @@ const quitCursor = async () => {
       <Button 
         variant="gold" 
         size="lg" 
-        @click="quitCursor"
+        @click="quitQoder"
         :loading="loading"
         :disabled="loading"
         class="flex-1"

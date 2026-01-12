@@ -13,7 +13,7 @@ import {
   BookOpen,
   Users
 } from 'lucide-vue-next'
-import CursorIcon from '@/components/ui/CursorIcon.vue'
+import QoderIcon from '@/components/ui/QoderIcon.vue'
 import { useI18n } from '@/composables/useI18n'
 import { useTextScaling } from '@/composables/useTextScaling'
 import { usePrivacy } from '@/composables/usePrivacy'
@@ -54,7 +54,7 @@ const menuItems = computed(() => [
   { id: 'multiAccountManager', labelKey: 'menu.multiAccountManager', icon: Users },
   { id: 'disableUpdate', labelKey: 'menu.disableUpdate', icon: Shield },
   { id: 'tokenBypass', labelKey: 'menu.tokenBypass', icon: Lock },
-  { id: 'quitCursor', labelKey: 'menu.quitCursor', icon: Power },
+  { id: 'quitQoder', labelKey: 'menu.quitQoder', icon: Power },
   { id: 'totallyReset', labelKey: 'menu.totallyReset', icon: Trash2 },
   { id: 'docs', labelKey: 'menu.docs', icon: BookOpen },
   { id: 'settings', labelKey: 'menu.settings', icon: Settings },
@@ -155,7 +155,7 @@ const handleMenuClick = (itemId: string) => {
                 : 'bg-gradient-to-br from-gold-600 to-gold-700 opacity-60'
             )"
           >
-            <CursorIcon class="w-5 h-5 text-onyx-950" />
+            <QoderIcon class="w-5 h-5 text-onyx-950" />
           </div>
           <div class="flex-1 min-w-0 overflow-hidden">
             <p class="text-sm font-medium text-white truncate cursor-help overflow-hidden text-ellipsis whitespace-nowrap" :title="accountInfo.email || t('dashboard.notLoggedIn')">

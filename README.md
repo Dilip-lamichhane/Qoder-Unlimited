@@ -1,13 +1,13 @@
 <div align="center">
 
-# ➤ Cursor Free VIP
+# ➤ Qoder Free VIP
 
 **Modern GUI** | Reset Machine ID & Manage Multiple Accounts
 
-*Free Trial Helper for Cursor AI*
+*Free Trial Helper for Qoder AI*
 
-[![Stars](https://img.shields.io/github/stars/ChloeVPin/cursor-free-vip?style=flat-square)](https://github.com/ChloeVPin/cursor-free-vip/stargazers)
-[![Forks](https://img.shields.io/github/forks/ChloeVPin/cursor-free-vip?style=flat-square)](https://github.com/ChloeVPin/cursor-free-vip/network/members)
+[![Stars](https://img.shields.io/github/stars/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/stargazers)
+[![Forks](https://img.shields.io/github/forks/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/network/members)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square)](LICENSE.md)
 
 [中文](README.zh_CN.md) • [Русский](README.ru.md)
@@ -18,7 +18,7 @@
 
 <div align="center">
 
-![Cursor Free VIP Screenshot](assets/cursor-free-vip-v2.png)
+![Qoder Free VIP Screenshot](assets/qoder-free-vip-v2.png)
 
 </div>
 
@@ -28,10 +28,10 @@
 ```
 🎯 UNIQUE FEATURES:
  📚 Built-in Documentation - Complete documentation page inside the app
- 🔧 In-App Fixes - Automatic fixes for common Cursor issues:
+ 🔧 In-App Fixes - Automatic fixes for common Qoder issues:
     • Fix missing workbench.desktop.main.js file
     • Fix missing product.json file
-    • Fix Cursor installation location issues
+    • Fix Qoder installation location issues
  👥 In-App Account Manager - Multi-account management (Beta, untested)
     • Create, import, switch, and delete accounts
     • Stored locally in your Documents folder
@@ -64,10 +64,10 @@ CORE FEATURES:
  🔄 Reset Machine ID - Generate new identifiers to reset trial status
  👥 Multi-Account Manager (Beta) - Create, import, switch, and delete accounts
  🔐 Manual Authentication - Set credentials without standard login
- 🚫 Disable Auto-Updates - Prevent Cursor from updating automatically
+ 🚫 Disable Auto-Updates - Prevent Qoder from updating automatically
  🔢 Token Limit Helper - Adjust token limits and hide trial indicators
- ⏹️ Quit Cursor Process - Forcefully close all Cursor processes
- 🔁 Totally Reset Cursor - Complete reset of settings and configuration
+ ⏹️ Quit Qoder Process - Forcefully close all Qoder processes
+ 🔁 Totally Reset Qoder - Complete reset of settings and configuration
 
 ADDITIONAL:
  📚 Built-in Documentation - Complete help system inside the app
@@ -99,19 +99,19 @@ You can build from source if needed, but use at your own risk.
 
 ```
 WINDOWS (OFFICIAL RELEASE):
-1. Visit Releases: https://github.com/ChloeVPin/cursor-free-vip/releases
+1. Visit Releases: https://github.com/Dilip-lamichhane/qoder-free-vip/releases
 2. Download latest .exe installer
 3. Run installer (requires admin privileges)
-4. Launch Cursor Free VIP from applications
+4. Launch Qoder Free VIP from applications
 
 SYSTEM REQUIREMENTS:
  ✅ Windows 10/11 (x64)
- ✅ Cursor AI installed on your system
+ ✅ Qoder AI installed on your system
  ✅ Administrator privileges (recommended)
 
 BUILD FROM SOURCE (macOS/Linux):
-git clone https://github.com/ChloeVPin/cursor-free-vip.git
-cd cursor-free-vip
+git clone https://github.com/Dilip-lamichhane/qoder-free-vip.git
+cd qoder-free-vip
 npm install
 npm run build
 
@@ -139,9 +139,9 @@ USAGE CHECKLIST:
 
 CONFIGURATION:
  Config files stored in:
-  Windows: %USERPROFILE%\Documents\CursorFreeVIP\
-  macOS: ~/Documents/CursorFreeVIP/
-  Linux: ~/Documents/CursorFreeVIP/
+  Windows: %USERPROFILE%\Documents\QoderFreeVIP\
+  macOS: ~/Documents/QoderFreeVIP/
+  Linux: ~/Documents/QoderFreeVIP/
 
  Files:
   accounts.json - Multi-account data
@@ -157,15 +157,15 @@ CONFIGURATION:
 COMMON ISSUES:
  🔒 Permission errors → Run with administrator/root privileges
  ✉️ Account authorization errors → Use non-temporary email service
- 📁 Cursor path not found → Ensure Cursor is in default location
- ⚠️ Feature not working → Close Cursor completely before use
+ 📁 Qoder path not found → Ensure Qoder is in default location
+ ⚠️ Feature not working → Close Qoder completely before use
  🔨 Build errors (macOS/Linux) → Report issues on GitHub
  🚫 App won't start → Check Node.js and dependencies
 
 IN-APP FIXES AVAILABLE:
  🔧 Missing workbench.desktop.main.js → Use Troubleshooting section in app
  🔧 Missing product.json → Use Troubleshooting section in app
- 🔧 Cursor in wrong location → Use Troubleshooting section in app
+ 🔧 Qoder in wrong location → Use Troubleshooting section in app
 ```
 
 </details>
@@ -175,13 +175,13 @@ IN-APP FIXES AVAILABLE:
 
 ```
 ⚠️ Use administrator privileges to run the application
-⚠️ Confirm that Cursor is closed before running features
+⚠️ Confirm that Qoder is closed before running features
 ⚠️ This tool is only for learning and research purposes
 ⚠️ Please comply with relevant software usage terms
 ⚠️ This tool will not generate fake email accounts or OAuth access
 ⚠️ We do NOT support automated signups (outdated and unreliable)
 
-Please support the original Cursor project: https://cursor.com
+Please support the original Qoder project: https://qoder.com
 ```
 
 </details>
@@ -193,7 +193,7 @@ Please support the original Cursor project: https://cursor.com
 
 Contributions welcome! 🎉
 
-[🐛 Report Issues](https://github.com/ChloeVPin/cursor-free-vip/issues) • [💡 Suggest Features](https://github.com/ChloeVPin/cursor-free-vip/discussions)
+[🐛 Report Issues](https://github.com/Dilip-lamichhane/qoder-free-vip/issues) • [💡 Suggest Features](https://github.com/Dilip-lamichhane/qoder-free-vip/discussions)
 
 **Note:** Pull requests are disabled. If you find an issue, please report it and I'll fix it as the lead developer.
 
@@ -225,8 +225,8 @@ See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and version hist
 
 **Crafted with ❤️ using Electron & Vue.js**
 
-Made by [ChloeVPin](https://github.com/ChloeVPin)
+Made by [Dilip-lamichhane](https://github.com/Dilip-lamichhane)
 
-[⭐ Star this repo](https://github.com/ChloeVPin/cursor-free-vip) if you find it helpful!
+[⭐ Star this repo](https://github.com/Dilip-lamichhane/qoder-free-vip) if you find it helpful!
 
 </div>

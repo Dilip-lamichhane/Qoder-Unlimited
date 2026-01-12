@@ -1,13 +1,13 @@
 {
-  "name": "cursor-free-vip",
+  "name": "qoder-free-vip",
   "version": "1.0.0",
-  "description": "[Beta] Cursor Free Trial Helper - GUI Version. Windows only (macOS/Linux coming soon). Educational purposes only.",
+  "description": "[Beta] Qoder Free Trial Helper - GUI Version. Windows only (macOS/Linux coming soon). Educational purposes only.",
   "main": "dist-electron/main.js",
-  "author": "ChloeVPin",
+  "author": "Dilip-lamichhane",
   "license": "CC-BY-NC-ND-4.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChloeVPin/cursor-free-vip.git"
+    "url": "https://github.com/Dilip-lamichhane/qoder-free-vip.git"
   },
   "scripts": {
     "dev": "vite",
@@ -42,8 +42,8 @@
     "vue-tsc": "^3.2.1"
   },
   "build": {
-    "appId": "com.cursorfreevip.app",
-    "productName": "Cursor Free VIP",
+    "appId": "com.qoderfreevip.app",
+    "productName": "Qoder Free VIP",
     "directories": {
       "output": "release"
     },

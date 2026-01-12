@@ -17,7 +17,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   saveScreenshot: (imageData: string) => ipcRenderer.invoke('system:saveScreenshot', imageData),
   openDocs: () => ipcRenderer.invoke('docs:open'),
   
-  getCursorPaths: () => ipcRenderer.invoke('paths:getCursorPaths'),
+  getQoderPaths: () => ipcRenderer.invoke('paths:getQoderPaths'),
   getConfigDir: () => ipcRenderer.invoke('paths:getConfigDir'),
   
   loadConfig: () => ipcRenderer.invoke('config:load'),
@@ -28,13 +28,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
   
   resetMachineIds: () => ipcRenderer.invoke('machine:resetIds'),
   
-  quitCursor: () => ipcRenderer.invoke('cursor:quit'),
-  totallyReset: () => ipcRenderer.invoke('cursor:totallyReset'),
+  quitQoder: () => ipcRenderer.invoke('qoder:quit'),
+  totallyReset: () => ipcRenderer.invoke('qoder:totallyReset'),
   
   disableAutoUpdate: () => ipcRenderer.invoke('update:disable'),
   
   fixWorkbenchFile: () => ipcRenderer.invoke('fix:workbenchFile'),
-  fixCursorLocation: () => ipcRenderer.invoke('fix:cursorLocation'),
+  fixQoderLocation: () => ipcRenderer.invoke('fix:qoderLocation'),
   
   bypassTokenLimit: () => ipcRenderer.invoke('token:bypass'),
   
@@ -75,10 +75,10 @@ declare global {
       openPath: (path: string) => Promise<{ success: boolean; error?: string }>
       saveScreenshot: (imageData: string) => Promise<{ success: boolean; path?: string; error?: string }>
       openDocs: () => Promise<void>
-      getCursorPaths: () => Promise<{
+      getQoderPaths: () => Promise<{
         storagePath: string
         sqlitePath: string
-        cursorPath: string
+        qoderPath: string
         machineIdPath: string
       }>
       getConfigDir: () => Promise<string>
@@ -87,11 +87,11 @@ declare global {
       loadColorConfig: () => Promise<Record<string, any> | null>
       saveColorConfig: (colors: object) => Promise<boolean>
       resetMachineIds: () => Promise<{ success: boolean; logs: string[]; newIds?: Record<string, string>; error?: string }>
-      quitCursor: () => Promise<{ success: boolean; logs: string[] }>
+      quitQoder: () => Promise<{ success: boolean; logs: string[] }>
       totallyReset: () => Promise<{ success: boolean; logs: string[]; error?: string }>
       disableAutoUpdate: () => Promise<{ success: boolean; logs: string[]; error?: string }>
       fixWorkbenchFile: () => Promise<{ success: boolean; logs: string[]; error?: string }>
-      fixCursorLocation: () => Promise<{ success: boolean; logs: string[]; error?: string; alreadyFixed?: boolean }>
+      fixQoderLocation: () => Promise<{ success: boolean; logs: string[]; error?: string; alreadyFixed?: boolean }>
       bypassTokenLimit: () => Promise<{ success: boolean; logs: string[]; error?: string }>
       getAccountInfo: () => Promise<{
         email: string | null

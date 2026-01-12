@@ -121,7 +121,7 @@ const handleFixLocation = async () => {
   locationFixSuccess.value = false
   
   try {
-    const result = await window.electronAPI.fixCursorLocation()
+    const result = await window.electronAPI.fixQoderLocation()
     if (result.success) {
       locationFixSuccess.value = true
     }

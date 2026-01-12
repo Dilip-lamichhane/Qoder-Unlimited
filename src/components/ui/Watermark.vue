@@ -13,7 +13,7 @@ const handleClick = () => {
     <button
       @click="handleClick"
       class="text-[10px] text-onyx-500 hover:text-onyx-400 transition-colors duration-200 font-mono opacity-50 hover:opacity-70 cursor-pointer"
-      title="Made by ChloeVPin"
+      title="Made by Dilip-lamichhane"
     >
       made by {{ appMeta.author }}
     </button>

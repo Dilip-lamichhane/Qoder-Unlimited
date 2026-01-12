@@ -32,7 +32,7 @@ const resetMachineIds = async () => {
   
   try {
     emit('log', 'Closing Cursor application...')
-    await window.electronAPI.quitCursor()
+    await window.electronAPI.quitQoder()
     
     await new Promise(resolve => setTimeout(resolve, 1000))
     
@@ -87,6 +87,12 @@ const resetMachineIds = async () => {
         </InfoModal>
       </div>
     </Card>
+    
+    <!-- Trial Note -->
+    <div class="flex items-center gap-3 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+      <Info class="w-5 h-5 text-blue-400 flex-shrink-0" />
+      <p class="text-sm text-blue-200">{{ t('reset.trialNote') }}</p>
+    </div>
     
     <!-- Warning -->
     <div class="flex items-center gap-3 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">

@@ -1,92 +1,65 @@
-<div align="center">
+# Qoder Unlimited
 
-# ➤ Qoder Free VIP
+**Advanced Tool for Qoder Trial Management** | Machine ID Reset & Multi-Account Support
 
-**Modern GUI** | Reset Machine ID & Manage Multiple Accounts
+*A comprehensive solution for managing Qoder AI trial periods and accounts*
 
-*Free Trial Helper for Qoder AI*
-
-[![Stars](https://img.shields.io/github/stars/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/stargazers)
-[![Forks](https://img.shields.io/github/forks/Dilip-lamichhane/qoder-free-vip?style=flat-square)](https://github.com/Dilip-lamichhane/qoder-free-vip/network/members)
+[![Stars](https://img.shields.io/github/stars/Dilip-lamichhane/Qoder-Unlimited?style=flat-square)](https://github.com/Dilip-lamichhane/Qoder-Unlimited/stargazers)
+[![Forks](https://img.shields.io/github/forks/Dilip-lamichhane/Qoder-Unlimited?style=flat-square)](https://github.com/Dilip-lamichhane/Qoder-Unlimited/network/members)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-lightgrey?style=flat-square)](LICENSE.md)
 
 [中文](README.zh_CN.md) • [Русский](README.ru.md)
 
-</div>
-
 ---
 
-<div align="center">
+## 📷 Preview
 
 ![Qoder Free VIP Screenshot](assets/qoder-free-vip-v2.png)
 
-</div>
+## 🚀 Key Features
+
+### 🎯 What Makes This Tool Special
+
+- **Built-in Documentation**: Complete help system integrated into the application
+- **Smart Troubleshooting**: Automatic fixes for common Qoder issues
+  - Fixes missing workbench.desktop.main.js file
+  - Fixes missing product.json file
+  - Resolves Qoder installation location problems
+- **Multi-Account Management**: Create, import, switch, and delete accounts
+  - Accounts stored securely in your Documents folder
+  - Ready for advanced account features
+
+### 🛠️ Core Features
+
+- **🔄 Machine ID Reset**: Generate new identifiers to reset trial status
+- **👥 Multi-Account Manager**: Manage multiple Qoder accounts
+- **🔐 Manual Authentication**: Set credentials without standard login
+- **🚫 Auto-Update Disable**: Prevent unwanted updates
+- **🔢 Token Limit Helper**: Adjust token limits and hide trial indicators
+- **⏹️ Process Control**: Force close Qoder processes when needed
+- **🔁 Complete Reset**: Full reset of settings and configuration
+
+### 🌐 Additional Benefits
+
+- **📚 Built-in Documentation**: Complete help system inside the app
+- **🔧 Troubleshooting**: Automatic fixes for common issues
+- **🌐 Multi-language Support**: English, 简体中文, Русский
+- **🎨 Modern Interface**: Beautiful dark theme with glassmorphism
+- **📊 Real-time Tracking**: Live monitoring with detailed logs
 
 <details>
-<summary><b>⭐ What Makes Us Stand Out</b></summary>
+<summary><b>💻 System Requirements & Support</b></summary>
 
 ```
-🎯 UNIQUE FEATURES:
- 📚 Built-in Documentation - Complete documentation page inside the app
- 🔧 In-App Fixes - Automatic fixes for common Qoder issues:
-    • Fix missing workbench.desktop.main.js file
-    • Fix missing product.json file
-    • Fix Qoder installation location issues
- 👥 In-App Account Manager - Multi-account management (Beta, untested)
-    • Create, import, switch, and delete accounts
-    • Stored locally in your Documents folder
-    • Future-ready for advanced account features
+SUPPORTED PLATFORMS:
+ ✅ Windows (x64) - Official Release Available
+ 🚧 macOS (Intel, Apple Silicon) - Coming Soon (build from source)
+ 🚧 Linux (x64) - Coming Soon (build from source)
 
-🚫 WHAT WE DON'T DO:
- ❌ No Automated Signups - We don't support automated account creation
-    Automated signups are extremely outdated and unreliable
-    All account management is manual and user-controlled
-```
-
-</details>
-
-<details>
-<summary><b>⚠️ Beta Status</b></summary>
-
-This tool is currently in **beta**. Only Windows is officially released and tested.
-
-macOS and Linux support will be rolled out gradually. If you want to build from source for your OS, feel free to do so, but it has not been tested yet.
-
-**Note**: The Multi-Account Manager is in beta and has not been tested by the developer. It's available for future work and user testing.
-
-</details>
-
-<details>
-<summary><b>✨ Features</b></summary>
-
-```
-CORE FEATURES:
- 🔄 Reset Machine ID - Generate new identifiers to reset trial status
- 👥 Multi-Account Manager (Beta) - Create, import, switch, and delete accounts
- 🔐 Manual Authentication - Set credentials without standard login
- 🚫 Disable Auto-Updates - Prevent Qoder from updating automatically
- 🔢 Token Limit Helper - Adjust token limits and hide trial indicators
- ⏹️ Quit Qoder Process - Forcefully close all Qoder processes
- 🔁 Totally Reset Qoder - Complete reset of settings and configuration
-
-ADDITIONAL:
- 📚 Built-in Documentation - Complete help system inside the app
- 🔧 In-App Troubleshooting - Automatic fixes for common issues
- 🌐 Multi-language Support - English, 简体中文, Русский
- 🎨 Modern Dark Theme GUI - Beautiful glassmorphism interface
- 📊 Real-time Progress Tracking - Live monitoring with detailed logs
-```
-
-</details>
-
-<details>
-<summary><b>💻 System Support</b></summary>
-
-```
-PLATFORMS:
- ✅ Windows (x64) - Officially Released
- 🚧 macOS (Intel, Apple Silicon) - Coming Soon (build from source available)
- 🚧 Linux (x64) - Coming Soon (build from source available)
+SYSTEM REQUIREMENTS:
+ ✅ Windows 10/11 (x64)
+ ✅ Qoder AI installed on your system
+ ✅ Administrator privileges (recommended)
 
 NOTE: macOS and Linux builds are not yet officially released or tested.
 You can build from source if needed, but use at your own risk.
@@ -95,23 +68,18 @@ You can build from source if needed, but use at your own risk.
 </details>
 
 <details>
-<summary><b>📥 Installation</b></summary>
+<summary><b>📥 Installation & Setup</b></summary>
 
 ```
 WINDOWS (OFFICIAL RELEASE):
-1. Visit Releases: https://github.com/Dilip-lamichhane/qoder-free-vip/releases
-2. Download latest .exe installer
-3. Run installer (requires admin privileges)
-4. Launch Qoder Free VIP from applications
-
-SYSTEM REQUIREMENTS:
- ✅ Windows 10/11 (x64)
- ✅ Qoder AI installed on your system
- ✅ Administrator privileges (recommended)
+1. Visit Releases: https://github.com/Dilip-lamichhane/Qoder-Unlimited/releases
+2. Download the latest .exe installer
+3. Run installer (administrator privileges recommended)
+4. Launch Qoder Unlimited from your applications
 
 BUILD FROM SOURCE (macOS/Linux):
-git clone https://github.com/Dilip-lamichhane/qoder-free-vip.git
-cd qoder-free-vip
+git clone https://github.com/Dilip-lamichhane/Qoder-Unlimited.git
+cd Qoder-Unlimited
 npm install
 npm run build
 
@@ -126,24 +94,24 @@ PREREQUISITES:
 </details>
 
 <details>
-<summary><b>🚀 Quick Start</b></summary>
+<summary><b>🚀 Getting Started</b></summary>
 
 ```
-USAGE CHECKLIST:
- ✅ Ensure Cursor is closed before running
- ✅ Launch with administrator privileges
- ✅ Navigate sidebar for features
- ✅ Check info buttons (ℹ️) for explanations
- ✅ Use built-in Documentation page for help
- ✅ Save work before using features that close Cursor
+QUICK SETUP CHECKLIST:
+ ✅ Ensure Qoder is closed before running this tool
+ ✅ Launch with administrator privileges (recommended)
+ ✅ Navigate the sidebar to explore features
+ ✅ Check info buttons (ℹ️) for detailed explanations
+ ✅ Use the built-in Documentation page for help
+ ✅ Save your work before using features that close Qoder
 
-CONFIGURATION:
- Config files stored in:
+CONFIGURATION FILES:
+ Application data is stored in:
   Windows: %USERPROFILE%\Documents\QoderFreeVIP\
   macOS: ~/Documents/QoderFreeVIP/
   Linux: ~/Documents/QoderFreeVIP/
 
- Files:
+ IMPORTANT FILES:
   accounts.json - Multi-account data
   config.json - Application settings
 ```
@@ -151,18 +119,18 @@ CONFIGURATION:
 </details>
 
 <details>
-<summary><b>🚨 Troubleshooting</b></summary>
+<summary><b>🔧 Troubleshooting & Support</b></summary>
 
 ```
-COMMON ISSUES:
- 🔒 Permission errors → Run with administrator/root privileges
- ✉️ Account authorization errors → Use non-temporary email service
- 📁 Qoder path not found → Ensure Qoder is in default location
- ⚠️ Feature not working → Close Qoder completely before use
+FREQUENTLY ENCOUNTERED ISSUES:
+ 🔒 Permission errors → Launch with administrator/root privileges
+ ✉️ Account authorization errors → Use legitimate email service
+ 📁 Qoder path not found → Verify Qoder is in default installation location
+ ⚠️ Feature not working → Ensure Qoder is completely closed before use
  🔨 Build errors (macOS/Linux) → Report issues on GitHub
- 🚫 App won't start → Check Node.js and dependencies
+ 🚫 App won't start → Verify Node.js installation and dependencies
 
-IN-APP FIXES AVAILABLE:
+AUTOMATED FIXES AVAILABLE:
  🔧 Missing workbench.desktop.main.js → Use Troubleshooting section in app
  🔧 Missing product.json → Use Troubleshooting section in app
  🔧 Qoder in wrong location → Use Troubleshooting section in app
@@ -171,49 +139,51 @@ IN-APP FIXES AVAILABLE:
 </details>
 
 <details>
-<summary><b>📝 Important Notes</b></summary>
+<summary><b>⚠️ Important Information</b></summary>
 
 ```
-⚠️ Use administrator privileges to run the application
-⚠️ Confirm that Qoder is closed before running features
-⚠️ This tool is only for learning and research purposes
-⚠️ Please comply with relevant software usage terms
-⚠️ This tool will not generate fake email accounts or OAuth access
-⚠️ We do NOT support automated signups (outdated and unreliable)
+⚠️ Run with administrator privileges for full functionality
+⚠️ Always close Qoder completely before using this tool
+⚠️ This tool is designed for educational and research purposes
+⚠️ Please respect software licensing terms and conditions
+⚠️ This tool does not create fake email accounts or bypass security
+⚠️ Automated signups are not supported (unreliable and outdated)
 
-Please support the original Qoder project: https://qoder.com
+Support the original Qoder project: https://qoder.com
 ```
 
 </details>
 
 <details>
-<summary><b>🤝 Contributing</b></summary>
+<summary><b>👥 About the Project</b></summary>
 
 <div align="center">
 
-Contributions welcome! 🎉
+**Note:** This project is maintained by a single developer.
 
-[🐛 Report Issues](https://github.com/Dilip-lamichhane/qoder-free-vip/issues) • [💡 Suggest Features](https://github.com/Dilip-lamichhane/qoder-free-vip/discussions)
+[🐛 Report Issues](https://github.com/Dilip-lamichhane/Qoder-Unlimited/issues) • [💡 Suggest Features](https://github.com/Dilip-lamichhane/Qoder-Unlimited/discussions)
 
-**Note:** Pull requests are disabled. If you find an issue, please report it and I'll fix it as the lead developer.
+**Important:** Pull requests are disabled. If you find any issues, please report them and they will be addressed by the lead developer.
+
+The project shows two names in some places because it was originally a fork of another project. The current maintainer is Dilip-lamichhane.
 
 </div>
 
 </details>
 
 <details>
-<summary><b>📄 License</b></summary>
+<summary><b>📄 License Information</b></summary>
 
 This project is licensed under **CC BY-NC-ND 4.0**.
 
 See [LICENSE.md](LICENSE.md) for complete details.
 
-**Other languages:** [中文](LICENSE.zh_CN.md) • [Русский](LICENSE.ru.md)
+**Available in other languages:** [中文](LICENSE.zh_CN.md) • [Русский](LICENSE.ru.md)
 
 </details>
 
 <details>
-<summary><b>📋 Changelog</b></summary>
+<summary><b>📋 Version History</b></summary>
 
 See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and version history.
 
@@ -223,11 +193,11 @@ See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and version hist
 
 <div align="center">
 
-**Crafted with ❤️ using Electron & Vue.js**
+**Built with ❤️ using Electron & Vue.js**
 
-Made by [Dilip-lamichhane](https://github.com/Dilip-lamichhane)
+Maintained by [Dilip-lamichhane](https://github.com/Dilip-lamichhane)
 
-[⭐ Star this repo](https://github.com/Dilip-lamichhane/qoder-free-vip) if you find it helpful!
+[⭐ Star this repo](https://github.com/Dilip-lamichhane/Qoder-Unlimited) if you find it helpful!
 
 </div>
 
